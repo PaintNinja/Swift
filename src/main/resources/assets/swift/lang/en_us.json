@@ -1,0 +1,5 @@
+{
+    "swift.command.swiftBase": "Swift base command help.",
+    "swift.command.enable": "Swift enabled.",
+    "swift.command.disable": "Swift disabled."
+}
