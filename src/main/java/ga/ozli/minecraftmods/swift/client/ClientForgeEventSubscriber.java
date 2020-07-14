@@ -101,7 +101,7 @@ public final class ClientForgeEventSubscriber {
 	 * - Standard deviation calculation at stage 2
 	 */
 
-	/*@SubscribeEvent
+	@SubscribeEvent
 	public static void ClientTickEvent(final TickEvent.ClientTickEvent event) {
 
 		final Minecraft mc = Minecraft.getInstance();
@@ -156,11 +156,11 @@ public final class ClientForgeEventSubscriber {
 		if (PerformanceDataCollector.loggedFrames.size() >= SwiftConfig.framerateSamples) {
 			// calculate the avg framerate
 			avgFramerate = PerformanceDataCollector.calculateAverage();
-			LOGGER.debug("Average framerate: " + avgFramerate);
+			LOGGER.info("Average framerate: " + avgFramerate);
 
 			// calculate the 1% low
 			onePercentLow = PerformanceDataCollector.calculateOnePercentile();
-			LOGGER.debug("1% low: " + onePercentLow);
+			LOGGER.info("1% low: " + onePercentLow);
 
 			PerformanceDataCollector.loggedFrames.clear();
 		} else {
@@ -175,80 +175,10 @@ public final class ClientForgeEventSubscriber {
 		// go back to Stage 1 now that we're done
 		checkingCooldown += SwiftConfig.cooldownTicks;
 		checkingCooldown += SwiftConfig.checkInterval;
+	}
 
-		// old code that used to try to measure framerate drops using the frametime graph - overly complicated solution.
-		/*FrameTimer frameTimer = Minecraft.getInstance().getFrameTimer();
-		long[] last240FrameTimes = frameTimer.getFrames();
-		int ouchCount = 0;
-		int oofCount = 0;
-		int mehCount = 0;
-		int goodCount = 0;
-		int greatCount = 0;
-
-		// for each frame in the last240FrameTimes
-		for (int i = 0; i < 240; i++) {
-
-			// calculate its line height
-			int lineHeight = frameTimer.getLineHeight(last240FrameTimes[i], 30, 60);
-
-			// clamp it to between 0 and 100 so it's easy to measure, even if it's not super-accurate
-			int normalisedLineHeight = MathHelper.clamp(lineHeight, 0, 100);
-			LOGGER.info("Normalised line height: " + normalisedLineHeight);
-
-			if (normalisedLineHeight > 75) {
-				LOGGER.error("OUCH");
-				ouchCount++;
-			} else if (normalisedLineHeight < 75 && normalisedLineHeight > 50) {
-				LOGGER.warn("Oof");
-				oofCount++;
-			} else if (normalisedLineHeight < 50 && normalisedLineHeight > 25) {
-				LOGGER.warn("Meh");
-				mehCount++;
-			} else if (normalisedLineHeight < 25 && normalisedLineHeight > 10) {
-				LOGGER.info("Good!");
-				goodCount++;
-			} else {
-				LOGGER.info("Great!");
-				greatCount++;
-			}
-
-			LOGGER.error("SUMMARY:" +
-					"\nOuch:  " + ouchCount +
-					"\nOof:   " + oofCount +
-					"\nMeh:   " + mehCount +
-					"\nGood:  " + goodCount +
-					"\nGreat: " + greatCount);
-		*/
-
-		// even more complicated version that used the colour calculations in the debug graph to determine if frame times were good or bad
-			/*int frameColour = new DebugOverlayGui(Minecraft.getInstance()).getFrameColor(MathHelper.clamp(lineHeight, 0, 100), 0, 100 / 2, 100);
-
-			int alpha = frameColour >> 24 & 255;
-			int red = frameColour >> 16 & 255;
-			int green = frameColour >> 8 & 255;
-			int blue = frameColour & 255;
-
-			LOGGER.info("Frametime colour: argb(" + alpha + ", " + red + ", " + green + ", " + blue + ")");*/
-		//}
-
-
-
-		//int fps = Integer.parseInt(debug[0]); // grab the current FPS as shown on the debug screen
-		//int fpsCap = Integer.parseInt(debug[2]); // grab the framerate cap as shown on the debug screen
-
-		//int chunkUpdates = Integer.parseInt(debug[2].replaceFirst("\\(", "")); // do the same for chunk updates, but remove the preceeding '(' char first
-
-		// Todo: Check if Optifine support is necessary
-
-		// Don't run Swift when chunks are still being loaded and/or the player has recently entered the world
-		/*if (chunkUpdates >= Swift.chunkUpdates || player.ticksExisted < Swift.ticksExisted)
-			return;*/
-
-		//System.out.println("fps: " + fps);
-		//System.out.println("chunkUpdates: " + chunkUpdates);
-	//}
-
-	@SubscribeEvent
+	// TODO: Client-side chat commands
+	/*@SubscribeEvent
 	public static void ClientChatEvent(final ClientChatEvent event) {
 		final Minecraft mc = Minecraft.getInstance();
 		final ClientPlayerEntity player = mc.player;
@@ -275,5 +205,5 @@ public final class ClientForgeEventSubscriber {
 				}
 			}
 		}
-	}
+	}*/
 }
