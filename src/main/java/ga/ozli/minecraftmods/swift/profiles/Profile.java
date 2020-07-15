@@ -5,6 +5,7 @@ import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.AmbientOcclusionStatus;
 import net.minecraft.client.settings.CloudOption;
+import net.minecraft.client.settings.GraphicsFanciness;
 import net.minecraft.client.settings.ParticleStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +21,7 @@ public class Profile {
     private int renderDistance;
     private ParticleStatus particles;
     private int maxFps;
-    private boolean fancyGraphics;
+    private GraphicsFanciness graphicsFanciness;
     private AmbientOcclusionStatus ambientOcclusion;
     private CloudOption clouds;
     private boolean vsync;
@@ -70,7 +71,7 @@ public class Profile {
         profile.particles = gameSettings.particles;
         profile.maxFps = gameSettings.framerateLimit;
         //profile.fbo = gameSettings.fboEnable;
-        profile.fancyGraphics = gameSettings.fancyGraphics;
+        profile.graphicsFanciness = gameSettings.field_238330_f_;
         profile.ambientOcclusion = gameSettings.ambientOcclusionStatus;
         profile.clouds = gameSettings.getCloudOption();
 		//profile.fullscreen = gameSettings.fullscreen;
@@ -92,7 +93,7 @@ public class Profile {
         profile.particles = gameSettings.particles;
         profile.maxFps = gameSettings.framerateLimit;
         //profile.fbo = gameSettings.fboEnable;
-        profile.fancyGraphics = gameSettings.fancyGraphics;
+        profile.graphicsFanciness = gameSettings.field_238330_f_;
         profile.ambientOcclusion = gameSettings.ambientOcclusionStatus;
         profile.clouds = gameSettings.cloudOption;
         //profile.fullscreen = gameSettings.fullscreen;

@@ -1,0 +1,25 @@
+{
+  "package": "ga.ozli.minecraftmods.swift.mixins",
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "swift.refmap.json",
+  "client": [
+    "sodium.fast_mojmath.MixinFrustum",
+    "sodium.fast_mojmath.MixinMatrix3f",
+    "sodium.fast_mojmath.MixinMatrix4f",
+    "sodium.fast_mojmath.MixinMatrixStack"
+  ],
+  "mixins": [
+    "lithium.math.fast_util.AxisCycleDirectionMixin$BackwardMixin",
+    "lithium.math.fast_util.AxisCycleDirectionMixin$ForwardMixin",
+    "lithium.math.fast_util.BoxMixin",
+    "lithium.math.fast_util.DirectionMixin",
+    "lithium.shapes.blockstate_cache.BlockMixin",
+    "lithium.shapes.precompute_shape_arrays.SimpleVoxelShapeMixin",
+    "lithium.shapes.shape_merging.VoxelShapesMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

@@ -17,7 +17,7 @@ public final class CriteriaChecker {
     public static boolean isPlayerEntityLoadedAndOldEnough(Minecraft mc) {
         final ClientPlayerEntity player = mc.player;
         if (player == null) {
-            LOGGER.debug("Player entity is not loaded yet.");
+            //LOGGER.debug("Player entity is not loaded yet.");
             return false;
         } else {
             // player entity is loaded, check if old enough
@@ -28,7 +28,7 @@ public final class CriteriaChecker {
     public static boolean isPlayerEntityLoaded(Minecraft mc) {
         final ClientPlayerEntity player = mc.player;
         if (player == null) {
-            LOGGER.debug("Player entity is not loaded yet.");
+            //LOGGER.debug("Player entity is not loaded yet.");
             return false;
         } else {
             // player entity is loaded
@@ -50,8 +50,8 @@ public final class CriteriaChecker {
         final int ticksExisted = player.ticksExisted;
 
         if (ticksExisted < SwiftConfig.ticksExisted) {
-            LOGGER.debug("Player entity not existed for long enough yet.");
-            LOGGER.debug("ticksExisted: " + ticksExisted);
+            //LOGGER.debug("Player entity not existed for long enough yet.");
+            //LOGGER.debug("ticksExisted: " + ticksExisted);
             return false;
         } else {
             return true;
@@ -73,8 +73,8 @@ public final class CriteriaChecker {
 
         // todo: change from >= to > and adjust default config value accordingly
         if (pendingChunkUpdates >= SwiftConfig.pendingChunkUpdates) {
-            LOGGER.debug("Too many chunk updates pending to proceed.");
-            LOGGER.debug("pendingChunkUpdates: " + pendingChunkUpdates);
+            //LOGGER.debug("Too many chunk updates pending to proceed.");
+            //LOGGER.debug("pendingChunkUpdates: " + pendingChunkUpdates);
             return false;
         } else {
             return true;

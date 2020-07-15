@@ -31,6 +31,8 @@ public final class Swift {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
+    public static final Logger TmpLogger = LogManager.getLogger("SwiftMIXIN");
+
     public Swift() {
         LOGGER.debug("Swift for MC 1.15.2 started.");
 

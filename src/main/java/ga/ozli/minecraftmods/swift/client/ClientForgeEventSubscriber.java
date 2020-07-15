@@ -106,17 +106,17 @@ public final class ClientForgeEventSubscriber {
 
 		final Minecraft mc = Minecraft.getInstance();
 
-		LOGGER.debug("checkingCooldown: " + checkingCooldown);
+		//LOGGER.debug("checkingCooldown: " + checkingCooldown);
 
 		// Stage 1
 		// -------
 		final byte criteria = CriteriaChecker.checkCriteriaPassed(mc);
 		if (criteria == 0) {
-			LOGGER.debug("Criteria 0");
+			//LOGGER.debug("Criteria 0");
 			// criteria 1 through 3 not met, skip this tick
 			return;
 		} else if (criteria >= 1) {
-			LOGGER.debug("Criteria >=1");
+			//LOGGER.debug("Criteria >=1");
 			// criteria to reduce the checkingCooldown counter is met, decrement it by one if checkingCooldown is > 0
 			if (checkingCooldown > 0) {
 				checkingCooldown--;
@@ -125,7 +125,7 @@ public final class ClientForgeEventSubscriber {
 				// we're already at 0, so check if we meet all the criteria and if not, reset the cooldown to the
 				// checkInterval to avoid spamming checks too often
 				if (criteria != 2) {
-					LOGGER.debug("Criteria == 1");
+					//LOGGER.debug("Criteria == 1");
 					checkingCooldown += SwiftConfig.checkInterval;
 					return;
 				}
