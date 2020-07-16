@@ -1,9 +1,9 @@
-package ga.ozli.minecraftmods.swift.mixins.sodium.fast_mojmath;
+package ga.ozli.minecraftmods.swift.mixins.sodium.mojmath;
 
-import ga.ozli.minecraftmods.swift.client.sodium.render.FrustumExtended;
-import net.minecraft.client.renderer.culling.ClippingHelper;
-import net.minecraft.util.math.vector.Matrix4f;
-import net.minecraft.util.math.vector.Vector4f;
+import ga.ozli.minecraftmods.swift.client.sodium.util.math.FrustumExtended;
+import net.minecraft.client.renderer.culling.ClippingHelper; // import net.minecraft.client.render.Frustum;
+import net.minecraft.util.math.vector.Vector4f; // import net.minecraft.client.util.math.Vector4f;
+import net.minecraft.util.math.vector.Matrix4f; // import net.minecraft.util.math.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;

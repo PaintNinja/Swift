@@ -4,10 +4,11 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "swift.refmap.json",
   "client": [
-    "sodium.fast_mojmath.MixinFrustum",
-    "sodium.fast_mojmath.MixinMatrix3f",
-    "sodium.fast_mojmath.MixinMatrix4f",
-    "sodium.fast_mojmath.MixinMatrixStack"
+    "sodium.mojmath.MixinFrustum",
+    "sodium.mojmath.matrices.MixinMatrix3f",
+    "sodium.mojmath.matrices.MixinMatrix4f",
+    "sodium.mojmath.matrices.MixinMatrixStack",
+    "sodium.mojmath.matrices.MixinVertexConsumer"
   ],
   "mixins": [
     "lithium.cached_hashcode.BlockNeighborGroupMixin",
@@ -17,6 +18,7 @@
     "lithium.math.fast_util.DirectionMixin",
     "lithium.shapes.blockstate_cache.AbstractBlockStateMixin",
     "lithium.shapes.blockstate_cache.BlockMixin",
+    "lithium.shapes.blockstate_cache.BlockShapeCacheMixin",
     "lithium.shapes.precompute_shape_arrays.SimpleVoxelShapeMixin",
     "lithium.shapes.shape_merging.VoxelShapesMixin",
     "lithium.shapes.specialized_shapes.VoxelShapeMixin",

@@ -1,5 +1,5 @@
 package ga.ozli.minecraftmods.swift.mixins.lithium.shapes.blockstate_cache;
-/*
+
 import ga.ozli.minecraftmods.swift.common.lithium.block.BlockShapeCacheExtended;
 import ga.ozli.minecraftmods.swift.common.lithium.block.BlockShapeHelper;
 import net.minecraft.block.BlockState;
@@ -7,7 +7,7 @@ import net.minecraft.tags.BlockTags; // import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.VoxelShape; // import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.EmptyBlockView;
+import net.minecraft.world.EmptyBlockReader; // import net.minecraft.world.EmptyBlockView;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,17 +20,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * components which look to see if a block's shape can support it. This prompted an issue to be opened on the Mojang
  * issue tracker, which contains some additional information: https://bugs.mojang.com/browse/MC-174568
  */
-/*@Mixin(BlockState.ShapeCache.class)
+@Mixin(BlockState.Cache.class)
 public class BlockShapeCacheMixin implements BlockShapeCacheExtended {
     private static final Direction[] DIRECTIONS = Direction.values();
 
     @Shadow
     @Final
-    protected boolean[] solidFullSquare;
+    protected boolean[] solidSides;
 
     @Shadow
     @Final
-    protected boolean isFullCube;
+    protected boolean opaqueCollisionShape;
 
     private byte sideCoversSmallSquare;
     private boolean hasTopRim;
@@ -45,11 +45,11 @@ public class BlockShapeCacheMixin implements BlockShapeCacheExtended {
     }
 
     private void initSidedProperties(BlockState state) {
-        VoxelShape shape = state.getSidesShape(EmptyBlockView.INSTANCE, BlockPos.ORIGIN);
+        VoxelShape shape = state.getRenderShape(EmptyBlockReader.INSTANCE, BlockPos.ZERO);
 
         // If the shape is a full cube and the top face is a full square, it can always support another component
-        this.hasTopRim = (this.isFullCube && this.solidFullSquare[Direction.UP.ordinal()]) ||
-                BlockShapeHelper.sideCoversSquare(shape.getFace(Direction.UP), BlockShapeHelper.SOLID_MEDIUM_SQUARE_SHAPE);
+        this.hasTopRim = (this.opaqueCollisionShape && this.solidSides[Direction.UP.ordinal()]) ||
+                BlockShapeHelper.sideCoversSquare(shape.project(Direction.UP), BlockShapeHelper.SOLID_MEDIUM_SQUARE_SHAPE);
 
         for (Direction side : DIRECTIONS) {
             // [VanillaCopy] Block#sideCoversSmallSquare
@@ -57,7 +57,7 @@ public class BlockShapeCacheMixin implements BlockShapeCacheExtended {
                 continue;
             }
 
-            if (this.solidFullSquare[side.ordinal()] || BlockShapeHelper.sideCoversSquare(shape.getFace(side), BlockShapeHelper.SOLID_SMALL_SQUARE_SHAPE)) {
+            if (this.solidSides[side.ordinal()] || BlockShapeHelper.sideCoversSquare(shape.project(side), BlockShapeHelper.SOLID_SMALL_SQUARE_SHAPE)) {
                 this.sideCoversSmallSquare |= (1 << side.ordinal());
             }
         }
@@ -73,4 +73,3 @@ public class BlockShapeCacheMixin implements BlockShapeCacheExtended {
         return this.hasTopRim;
     }
 }
-*/
