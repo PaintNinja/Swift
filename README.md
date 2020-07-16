@@ -19,6 +19,7 @@ Done:
     - `fast_mojmath.MixinMatrix4f`
     - `fast_mojmath.MixinMatrixStack`
 - Lithium
+    - `cached_hashcode.BlockNeighborGroupMixin`
     - `math.fast_util.AxisCycleDirectionMixin$BackwardMixin`
     - `math.fast_util.AxisCycleDirectionMixin$ForwardMixin`
     - `math.fast_util.BoxMixin`
@@ -26,12 +27,15 @@ Done:
     - `shapes.blockstate_cache.BlockMixin`
     - `shapes.precompute_shape_arrays.SimpleVoxelShapeMixin`
     - `shapes.shape_merging.VoxelShapesMixin`
+    - `shapes.specialized_shapes.VoxelShapeMixin`
+    - `shapes.specialized_shapes.VoxelShapesMixin`
+        - Thanks to gigaherz on the MMD discord for helping me get an access transformer for a constructor for this to work
 
 On the backburner:
 (these rely on things that seem to be *very* different between Forge and Fabric)
 - Sodium
-    - `sodium.buffers.MixinBufferBuilder`
-    - `sodium.buffers.MixinSpriteTexturedVertexConsumer`
+    - `buffers.MixinBufferBuilder`
+    - `buffers.MixinSpriteTexturedVertexConsumer`
 
 Todo:
 - A complete port other jellysquid3's excellent Lithium and Phosphor 1.16 mods for Fabric to Forge
@@ -70,3 +74,4 @@ I also keep comments of the old Fabric imports so that it' easier to map the Fab
 - Ported things from Lithium for Fabric:
     - Optimized backing cache for Block#isOpaque (https://github.com/jellysquid3/lithium-fabric/commit/c3a449c8ae5b24d686c6525c1d258e92f6efb9c1#diff-c058ef87fb2d3e963703ad3cdb4e909c)
     - TODO: Patches to reduce overhead of entity fluid checks (https://github.com/jellysquid3/lithium-fabric/commit/656e44957d750d71ffe880f4c1bef6b442fb0a88#diff-c058ef87fb2d3e963703ad3cdb4e909c)
+- Pretty much all changes and additions to Lithium and Phosphor for Fabric since the official Forge port of them.
