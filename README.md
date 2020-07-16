@@ -24,9 +24,11 @@ Done:
     - `math.fast_util.AxisCycleDirectionMixin$ForwardMixin`
     - `math.fast_util.BoxMixin`
     - `math.fast_util.DirectionMixin`
+    - `shapes.blockstate_cache.AbstractBlockStateMixin`
     - `shapes.blockstate_cache.BlockMixin`
     - `shapes.precompute_shape_arrays.SimpleVoxelShapeMixin`
     - `shapes.shape_merging.VoxelShapesMixin`
+        - Thanks to access transfarmer and others on the Fabric discord for helping me verify that the mixins were actually working by registering breakpoints in the right spots
     - `shapes.specialized_shapes.VoxelShapeMixin`
     - `shapes.specialized_shapes.VoxelShapesMixin`
         - Thanks to gigaherz on the MMD discord for helping me get an access transformer for a constructor for this to work

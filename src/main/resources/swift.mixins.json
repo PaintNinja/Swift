@@ -15,6 +15,7 @@
     "lithium.math.fast_util.AxisCycleDirectionMixin$ForwardMixin",
     "lithium.math.fast_util.BoxMixin",
     "lithium.math.fast_util.DirectionMixin",
+    "lithium.shapes.blockstate_cache.AbstractBlockStateMixin",
     "lithium.shapes.blockstate_cache.BlockMixin",
     "lithium.shapes.precompute_shape_arrays.SimpleVoxelShapeMixin",
     "lithium.shapes.shape_merging.VoxelShapesMixin",
