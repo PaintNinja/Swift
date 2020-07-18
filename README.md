@@ -14,14 +14,15 @@ What's included?
 
 Done:
 - Sodium
-    - `buffers.MixinBufferBuilder`
-    - `buffers.MixinSpriteTexturedVertexConsumer`
-    - `buffers.fast_sort.MixinBufferBuilder`
-    - `mojmath.MixinFrustum`
-    - `mojmath.matrices.MixinMatrix3f`
-    - `mojmath.matrices.MixinMatrix4f`
-    - `mojmath.matrices.MixinMatrixStack`
-    - `mojmath.matrices.MixinVertexConsumer`
+    - `core.frustum.MixinFrustum`
+    - `core.matrix.MixinMatrix3f`
+    - `core.matrix.MixinMatrix4f`
+    - `features.buffer_builder.fast_advance.MixinBufferBuilder`
+    - `features.buffer_builder.fast_sort.MixinBufferBuilder`
+    - `features.buffer_builder.intrinsics.MixinBufferBuilder`
+    - `features.buffer_builder.intrinsics.MixinSpriteTexturedVertexConsumer`
+    - `features.matrix_stack.MixinMatrixStack`
+    - `features.matrix_stack.MixinVertexConsumer`
 - Lithium
     - `cached_hashcode.BlockNeighborGroupMixin`
     - `math.fast_util.AxisCycleDirectionMixin$BackwardMixin`
@@ -63,27 +64,6 @@ Once I've got that, I can then go about converting the different function names 
 What's different about your approach?
 -------------------------------------
 I intentionally avoid changing the names of any functions or variables when not necessary. This in turn can lead to somewhat more confusing code for someone only versed in Forge mappings, but the benefit is that new optimisations and changes on the Fabric version can be more easily ported to Forge in future.
-
-What does Swift offer that other Forge optimisation mods don't?
----------------------------------------------------------------
-(temp text here until I write a proper desc. for this section)
-I don't copy over the code from jellysquid3's Forge ports unless (I'm really stuck!) so that I can take advantage of newer optimisations added to the Fabric versions since then.
-
-I also keep comments of the old Fabric imports so that it' easier to map the Fabric changes over to Forge without having to re-lookup the equivalent Forge mappings.
-
-### Here's a list of things that can only be found in Swift if you need to use Forge:
-- Ported things from Sodium for Fabric:
-    - `buffers.MixinBufferBuilder`
-    - `buffers.MixinSpriteTexturedVertexConsumer`
-    - `mojmath.MixinFrustum`
-    - `mojmath.matrices.MixinMatrix3f`
-    - `mojmath.matrices.MixinMatrix4f`
-    - `mojmath.matrices.MixinMatrixStack`
-    - `mojmath.matrices.MixinVertexConsumer`
-- Ported things from Lithium for Fabric:
-    - Optimized backing cache for Block#isOpaque (https://github.com/jellysquid3/lithium-fabric/commit/c3a449c8ae5b24d686c6525c1d258e92f6efb9c1#diff-c058ef87fb2d3e963703ad3cdb4e909c)
-    - TODO: Patches to reduce overhead of entity fluid checks (https://github.com/jellysquid3/lithium-fabric/commit/656e44957d750d71ffe880f4c1bef6b442fb0a88#diff-c058ef87fb2d3e963703ad3cdb4e909c)
-- Pretty much all changes and additions to Lithium and Phosphor for Fabric since the official Forge port of them.
 
 Why are you unofficially maintaining Forge ports of jellysquid3's mods?
 -----------------------------------------------------------------------
