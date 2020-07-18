@@ -32,7 +32,7 @@ public class DirectionMixin {
      * @author JellySquid
      */
     @Overwrite
-    public static Direction random(Random rand) {
+    public static Direction func_239631_a_(Random rand) {
         return VALUES[rand.nextInt(VALUES.length)];
     }
 }
