@@ -1,4 +1,4 @@
-package ga.ozli.minecraftmods.swift.mixins.sodium.mojmath.matrices;
+package ga.ozli.minecraftmods.swift.mixins.sodium.features.matrix_stack;
 
 import ga.ozli.minecraftmods.swift.client.sodium.util.math.Matrix3fExtended;
 import ga.ozli.minecraftmods.swift.client.sodium.util.math.Matrix4fExtended;

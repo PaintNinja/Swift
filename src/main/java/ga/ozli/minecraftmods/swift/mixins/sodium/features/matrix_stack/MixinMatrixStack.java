@@ -1,4 +1,4 @@
-package ga.ozli.minecraftmods.swift.mixins.sodium.mojmath.matrices;
+package ga.ozli.minecraftmods.swift.mixins.sodium.features.matrix_stack;
 
 import ga.ozli.minecraftmods.swift.client.sodium.util.math.Matrix3fExtended;
 import ga.ozli.minecraftmods.swift.client.sodium.util.math.Matrix4fExtended;
@@ -19,7 +19,7 @@ public class MixinMatrixStack {
     private Deque<MatrixStack.Entry> stack;
 
     /**
-     * @reason Use specialized function
+     * @reason Use our faster specialized function
      * @author JellySquid
      */
     @Overwrite
@@ -31,7 +31,7 @@ public class MixinMatrixStack {
     }
 
     /**
-     * @reason Use specialized function
+     * @reason Use our faster specialized function
      * @author JellySquid
      */
     @Overwrite

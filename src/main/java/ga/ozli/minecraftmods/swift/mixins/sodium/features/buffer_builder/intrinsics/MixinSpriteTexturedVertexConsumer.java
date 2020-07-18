@@ -1,4 +1,4 @@
-package ga.ozli.minecraftmods.swift.mixins.sodium.buffers;
+package ga.ozli.minecraftmods.swift.mixins.sodium.features.buffer_builder.intrinsics;
 
 import ga.ozli.minecraftmods.swift.client.sodium.model.consumer.ParticleVertexConsumer;
 import ga.ozli.minecraftmods.swift.client.sodium.model.consumer.QuadVertexConsumer;

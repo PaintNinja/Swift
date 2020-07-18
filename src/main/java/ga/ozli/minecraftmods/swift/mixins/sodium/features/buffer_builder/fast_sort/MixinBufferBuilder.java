@@ -1,4 +1,4 @@
-package ga.ozli.minecraftmods.swift.mixins.sodium.buffers.fast_sort;
+package ga.ozli.minecraftmods.swift.mixins.sodium.features.buffer_builder.fast_sort;
 
 import com.google.common.primitives.Floats;
 import net.minecraft.client.renderer.BufferBuilder; // import net.minecraft.client.render.BufferBuilder;

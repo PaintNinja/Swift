@@ -1,4 +1,4 @@
-package ga.ozli.minecraftmods.swift.mixins.sodium.mojmath;
+package ga.ozli.minecraftmods.swift.mixins.sodium.core.frustum;
 
 import ga.ozli.minecraftmods.swift.client.sodium.util.math.FrustumExtended;
 import net.minecraft.client.renderer.culling.ClippingHelper; // import net.minecraft.client.render.Frustum;
