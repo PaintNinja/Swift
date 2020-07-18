@@ -21,6 +21,7 @@ Done:
     - `features.buffer_builder.fast_sort.MixinBufferBuilder`
     - `features.buffer_builder.intrinsics.MixinBufferBuilder`
     - `features.buffer_builder.intrinsics.MixinSpriteTexturedVertexConsumer`
+    - `features.gui.font.MixinGlyphRenderer`
     - `features.matrix_stack.MixinMatrixStack`
     - `features.matrix_stack.MixinVertexConsumer`
 - Lithium
@@ -38,11 +39,6 @@ Done:
     - `shapes.specialized_shapes.VoxelShapeMixin`
     - `shapes.specialized_shapes.VoxelShapesMixin`
         - Thanks to gigaherz on the MMD discord for helping me get an access transformer for a constructor for this to work
-
-On the backburner:
-(these rely on things that seem to be *very* different between Forge and Fabric)
-- Sodium
-    - `buffers.MixinSpriteTexturedVertexConsumer`
 
 Todo:
 - A complete port other jellysquid3's excellent Lithium and Phosphor 1.16 mods for Fabric to Forge

@@ -11,6 +11,7 @@
     "sodium.features.buffer_builder.fast_sort.MixinBufferBuilder",
     "sodium.features.buffer_builder.intrinsics.MixinBufferBuilder",
     "sodium.features.buffer_builder.intrinsics.MixinSpriteTexturedVertexConsumer",
+    "sodium.features.gui.font.MixinGlyphRenderer",
     "sodium.features.matrix_stack.MixinMatrixStack",
     "sodium.features.matrix_stack.MixinVertexConsumer"
   ],
