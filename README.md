@@ -17,6 +17,7 @@ Done:
     - `core.frustum.MixinFrustum`
     - `core.matrix.MixinMatrix3f`
     - `core.matrix.MixinMatrix4f`
+    - `features.block.MixinBufferBuilder`
     - `features.buffer_builder.fast_advance.MixinBufferBuilder`
     - `features.buffer_builder.fast_sort.MixinBufferBuilder`
     - `features.buffer_builder.intrinsics.MixinBufferBuilder`
@@ -59,7 +60,7 @@ Once I've got that, I can then go about converting the different function names 
 
 What's different about your approach?
 -------------------------------------
-I intentionally avoid changing the names of any functions or variables when not necessary. This in turn can lead to somewhat more confusing code for someone only versed in Forge mappings, but the benefit is that new optimisations and changes on the Fabric version can be more easily ported to Forge in future.
+I intentionally avoid changing the names of any functions or variables when not necessary. This in turn can lead to somewhat more confusing code for someone only versed in Forge mappings, but the benefit is that new optimisations and changes on the Fabric version can be more easily ported to Forge in the future.
 
 Why are you unofficially maintaining Forge ports of jellysquid3's mods?
 -----------------------------------------------------------------------
