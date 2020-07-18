@@ -1,60 +1,38 @@
 package ga.ozli.minecraftmods.swift.mixins.sodium.buffers;
-/*
-import ga.ozli.minecraftmods.swift.client.sodium.model.DirectVertexConsumer;
-import net.minecraft.client.render.SpriteTexturedVertexConsumer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.texture.Sprite;
+
+import ga.ozli.minecraftmods.swift.client.sodium.model.consumer.ParticleVertexConsumer;
+import ga.ozli.minecraftmods.swift.client.sodium.model.consumer.QuadVertexConsumer;
+import net.minecraft.client.renderer.SpriteAwareVertexBuilder; // import net.minecraft.client.render.SpriteTexturedVertexConsumer;
+import com.mojang.blaze3d.vertex.IVertexBuilder; // import net.minecraft.client.render.VertexConsumer; - dafu?
+import net.minecraft.client.renderer.texture.TextureAtlasSprite; // import net.minecraft.client.texture.Sprite;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(SpriteTexturedVertexConsumer.class)
-public abstract class MixinSpriteTexturedVertexConsumer implements DirectVertexConsumer {
+@Mixin(SpriteAwareVertexBuilder.class)
+public abstract class MixinSpriteTexturedVertexConsumer implements QuadVertexConsumer, ParticleVertexConsumer {
     @Shadow
     @Final
-    private VertexConsumer parent;
+    private IVertexBuilder vertexBuilder;
 
     @Shadow
     @Final
-    private Sprite sprite;
-
-    private boolean direct;
-
-    @Inject(method = "<init>", at = @At("RETURN"))
-    private void init(VertexConsumer consumer, Sprite sprite, CallbackInfo ci) {
-        this.direct = DirectVertexConsumer.getDirectVertexConsumer(this.parent) != null;
-    }
+    private TextureAtlasSprite atlasSprite;
 
     @Override
-    public void vertex(float x, float y, float z, int color, float u, float v, int overlay, int light, int norm) {
-        if (!this.canUseDirectWriting()) {
-            throw new UnsupportedOperationException("Not a direct buffer");
-        }
+    public void vertexQuad(float x, float y, float z, int color, float u, float v, int light, int overlay, int norm) {
+        u = this.atlasSprite.getInterpolatedU(u * 16.0F);
+        v = this.atlasSprite.getInterpolatedV(v * 16.0F);
 
-        u = this.sprite.getFrameU(u * 16.0F);
-        v = this.sprite.getFrameV(v * 16.0F);
-
-        ((DirectVertexConsumer) this.parent).vertex(x, y, z, color, u, v, overlay, light, norm);
+        ((QuadVertexConsumer) this.vertexBuilder).vertexQuad(x, y, z, color, u, v, light, overlay, norm);
     }
 
     @Override
     public void vertexParticle(float x, float y, float z, float u, float v, int color, int light) {
-        if (!this.canUseDirectWriting()) {
-            throw new UnsupportedOperationException("Not a direct buffer");
-        }
+        u = this.atlasSprite.getInterpolatedU(u * 16.0F);
+        v = this.atlasSprite.getInterpolatedV(v * 16.0F);
 
-        u = this.sprite.getFrameU(u * 16.0F);
-        v = this.sprite.getFrameV(v * 16.0F);
-
-        ((DirectVertexConsumer) this.parent).vertexParticle(x, y, z, u, v, color, light);
+        ((ParticleVertexConsumer) this.vertexBuilder).vertexParticle(x, y, z, u, v, color, light);
     }
 
-    @Override
-    public boolean canUseDirectWriting() {
-        return this.direct;
-    }
 }
-*/

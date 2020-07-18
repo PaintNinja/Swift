@@ -14,10 +14,14 @@ What's included?
 
 Done:
 - Sodium
-    - `fast_mojmath.MixinFrustum`
-    - `fast_mojmath.MixinMatrix3f`
-    - `fast_mojmath.MixinMatrix4f`
-    - `fast_mojmath.MixinMatrixStack`
+    - `buffers.MixinBufferBuilder`
+    - `buffers.MixinSpriteTexturedVertexConsumer`
+    - `buffers.fast_sort.MixinBufferBuilder`
+    - `mojmath.MixinFrustum`
+    - `mojmath.matrices.MixinMatrix3f`
+    - `mojmath.matrices.MixinMatrix4f`
+    - `mojmath.matrices.MixinMatrixStack`
+    - `mojmath.matrices.MixinVertexConsumer`
 - Lithium
     - `cached_hashcode.BlockNeighborGroupMixin`
     - `math.fast_util.AxisCycleDirectionMixin$BackwardMixin`
@@ -37,7 +41,6 @@ Done:
 On the backburner:
 (these rely on things that seem to be *very* different between Forge and Fabric)
 - Sodium
-    - `buffers.MixinBufferBuilder`
     - `buffers.MixinSpriteTexturedVertexConsumer`
 
 Todo:
@@ -70,11 +73,22 @@ I also keep comments of the old Fabric imports so that it' easier to map the Fab
 
 ### Here's a list of things that can only be found in Swift if you need to use Forge:
 - Ported things from Sodium for Fabric:
-    - `fast_mojmath.MixinFrustum`
-    - `fast_mojmath.MixinMatrix3f`
-    - `fast_mojmath.MixinMatrix4f`
-    - `fast_mojmath.MixinMatrixStack`
+    - `buffers.MixinBufferBuilder`
+    - `buffers.MixinSpriteTexturedVertexConsumer`
+    - `mojmath.MixinFrustum`
+    - `mojmath.matrices.MixinMatrix3f`
+    - `mojmath.matrices.MixinMatrix4f`
+    - `mojmath.matrices.MixinMatrixStack`
+    - `mojmath.matrices.MixinVertexConsumer`
 - Ported things from Lithium for Fabric:
     - Optimized backing cache for Block#isOpaque (https://github.com/jellysquid3/lithium-fabric/commit/c3a449c8ae5b24d686c6525c1d258e92f6efb9c1#diff-c058ef87fb2d3e963703ad3cdb4e909c)
     - TODO: Patches to reduce overhead of entity fluid checks (https://github.com/jellysquid3/lithium-fabric/commit/656e44957d750d71ffe880f4c1bef6b442fb0a88#diff-c058ef87fb2d3e963703ad3cdb4e909c)
 - Pretty much all changes and additions to Lithium and Phosphor for Fabric since the official Forge port of them.
+
+Why are you unofficially maintaining Forge ports of jellysquid3's mods?
+-----------------------------------------------------------------------
+There are various big Forge mods that aren't on Fabric yet, making it unrealistic for everyone to move over from Forge just so they can take advantage of some of the great optimisations that have been made elsewhere. I'm just buying those big Forge mod devs some extra time.
+
+As this is an unofficial port, it may be buggier than the official Fabric versions of the mods. **Don't contact jellysquid3 for help with this Forge port, she's not involved with this port in any shape or form.**
+
+Once all the mods you want (or alternatives of those mods) are available on Fabric, I strongly recommend that you move to Fabric instead of relying on this unofficial, unsupported port that may become too hard for me to maintain once jellysquid3's mods become reliant on Fabric-exclusive functionality, such as the FRAPI.
