@@ -18,6 +18,7 @@
     "sodium.features.matrix_stack.MixinVertexConsumer"
   ],
   "mixins": [
+    "lithium.alloc.enum_values.LivingEntityMixin",
     "lithium.cached_hashcode.BlockNeighborGroupMixin",
     "lithium.chunk.serialization.MixinBitArray",
     "lithium.math.fast_util.AxisCycleDirectionMixin$BackwardMixin",
