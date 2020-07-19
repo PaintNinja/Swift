@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "swift.refmap.json",
   "client": [
+    "lithium.fast_loading_screen.MixinLevelLoadingScreen",
     "sodium.core.frustum.MixinFrustum",
     "sodium.core.matrix.MixinMatrix3f",
     "sodium.core.matrix.MixinMatrix4f",

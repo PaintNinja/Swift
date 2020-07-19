@@ -28,6 +28,7 @@ Done:
 - Lithium
     - `cached_hashcode.BlockNeighborGroupMixin`
     - `chunk.serialization.MixinBitArray`
+    - `fast_loading_screen.MixinLevelLoadingScreen`
     - `math.fast_util.AxisCycleDirectionMixin$BackwardMixin`
     - `math.fast_util.AxisCycleDirectionMixin$ForwardMixin`
     - `math.fast_util.BoxMixin`
