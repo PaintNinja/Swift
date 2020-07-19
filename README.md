@@ -27,8 +27,7 @@ Done:
     - `features.matrix_stack.MixinVertexConsumer`
 - Lithium
     - `cached_hashcode.BlockNeighborGroupMixin`
-    - `chunk.serialization.PackedIntegerArrayMixin`
-    - `chunk.serialization.PalettedContainerMixin`
+    - `chunk.serialization.MixinBitArray`
     - `math.fast_util.AxisCycleDirectionMixin$BackwardMixin`
     - `math.fast_util.AxisCycleDirectionMixin$ForwardMixin`
     - `math.fast_util.BoxMixin`

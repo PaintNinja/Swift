@@ -18,9 +18,7 @@
   ],
   "mixins": [
     "lithium.cached_hashcode.BlockNeighborGroupMixin",
-    "lithium.chunk.serialization.IntIdentityHashBiMapMixin",
-    "lithium.chunk.serialization.PackedIntegerArrayMixin",
-    "lithium.chunk.serialization.PalettedContainerMixin",
+    "lithium.chunk.serialization.MixinBitArray",
     "lithium.math.fast_util.AxisCycleDirectionMixin$BackwardMixin",
     "lithium.math.fast_util.AxisCycleDirectionMixin$ForwardMixin",
     "lithium.math.fast_util.BoxMixin",
