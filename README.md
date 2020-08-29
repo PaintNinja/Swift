@@ -48,6 +48,7 @@ What won't be included?
 - Old optimisations that are no longer necessary on modern Minecraft releases
 - Optimisations made by a dev that has reached out to me and politely asked for their optimisations to *not* be ported by me in any form, despite them legally having no grounds to do such a thing. I oblige by these requests out of respect.
     - My username on CurseForge is Paint_Ninja, similar or identical profile pic to on GitHub, you can message me there if you want to make such a request.
+    - Tweets, forum posts and/or PSAs to your own communities does not count, you have to contact me directly if you want to make such a request.
 
 How do you do it?
 -----------------
