@@ -11,10 +11,10 @@ public final class PerformanceDataAnalyser {
         // very basic algorithm for now as a proof-of-concept
         if (avgFramerate < targetAvgFPS) {
             // lower render dist
-            LOGGER.info("Lower render dist");
+            //LOGGER.info("Lower render dist");
         } else {
             // higher render dist
-            LOGGER.info("Higher render dist");
+            //LOGGER.info("Higher render dist");
         }
     }
 }

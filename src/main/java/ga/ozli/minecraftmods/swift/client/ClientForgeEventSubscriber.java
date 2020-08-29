@@ -156,11 +156,11 @@ public final class ClientForgeEventSubscriber {
 		if (PerformanceDataCollector.loggedFrames.size() >= SwiftConfig.framerateSamples) {
 			// calculate the avg framerate
 			avgFramerate = PerformanceDataCollector.calculateAverage();
-			LOGGER.info("Average framerate: " + avgFramerate);
+			//LOGGER.info("Average framerate: " + avgFramerate);
 
 			// calculate the 1% low
 			onePercentLow = PerformanceDataCollector.calculateOnePercentile();
-			LOGGER.info("1% low: " + onePercentLow);
+			//LOGGER.info("1% low: " + onePercentLow);
 
 			PerformanceDataCollector.loggedFrames.clear();
 		} else {

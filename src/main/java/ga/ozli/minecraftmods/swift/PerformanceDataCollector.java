@@ -28,7 +28,7 @@ public final class PerformanceDataCollector {
     public static void collectFramerateSample() {
         final short currentFramerate = (short) Minecraft.debugFPS;
         loggedFrames.add(currentFramerate);
-        LOGGER.debug("Added sample with currentFramerate of " + currentFramerate);
+        //LOGGER.debug("Added sample with currentFramerate of " + currentFramerate);
     }
 
     public static int calculateAverage() {
