@@ -10,11 +10,11 @@ public final class CriteriaChecker {
 
     private static final Logger LOGGER = LogManager.getLogger(Swift.MODID + " Criteria Checking");
 
-    public static boolean isWorldLoaded(Minecraft mc) {
+    public static boolean isWorldLoaded(final Minecraft mc) {
         return mc.world != null;
     }
 
-    public static boolean isPlayerEntityLoadedAndOldEnough(Minecraft mc) {
+    public static boolean isPlayerEntityLoadedAndOldEnough(final Minecraft mc) {
         final ClientPlayerEntity player = mc.player;
         if (player == null) {
             //LOGGER.debug("Player entity is not loaded yet.");
@@ -25,7 +25,7 @@ public final class CriteriaChecker {
         }
     }
 
-    public static boolean isPlayerEntityLoaded(Minecraft mc) {
+    public static boolean isPlayerEntityLoaded(final Minecraft mc) {
         final ClientPlayerEntity player = mc.player;
         if (player == null) {
             //LOGGER.debug("Player entity is not loaded yet.");
@@ -67,7 +67,7 @@ public final class CriteriaChecker {
         }
     }
 
-    public static boolean areNotTooManyChunkUpdatesPending(Minecraft mc) {
+    public static boolean areNotTooManyChunkUpdatesPending(final Minecraft mc) {
         // get the amount of chunks still needing to be loaded/updated
         final int pendingChunkUpdates = mc.worldRenderer.chunksToUpdate.size();
 
@@ -83,7 +83,7 @@ public final class CriteriaChecker {
 
     /** Returns 0 early (by using the double ampersands) if any of the criteria fails, returns 1 early if only criteria
      * 1 through 3 are met, returns 2 if all criteria is met. */
-    public static byte checkCriteriaPassed(Minecraft mc) {
+    public static byte checkCriteriaPassed(final Minecraft mc) {
         if (isSwiftEnabled() && isWorldLoaded(mc) && isPlayerEntityLoaded(mc)) {
             // Swift enabled: Yes
             // World loaded: Yes

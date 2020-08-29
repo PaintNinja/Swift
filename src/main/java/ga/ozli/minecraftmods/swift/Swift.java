@@ -34,7 +34,7 @@ public final class Swift {
     public static final Logger TmpLogger = LogManager.getLogger("SwiftMIXIN");
 
     public Swift() {
-        LOGGER.debug("Swift for MC 1.15.2 started.");
+        LOGGER.debug("Swift for MC 1.16.2 started.");
 
         final ModLoadingContext modLoadingContext = ModLoadingContext.get();
         modLoadingContext.registerConfig(ModConfig.Type.CLIENT, ConfigHolder.CLIENT_SPEC);
