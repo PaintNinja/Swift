@@ -1,6 +1,6 @@
 Swift
 =====
-Dynamic optimisation mod for Minecraft 1.16.1 (Forge)
+Dynamic optimisation mod for Minecraft 1.16.2 (Forge)
 
 What does it do?
 ----------------
@@ -10,7 +10,7 @@ In addition to this, I've provided some of my own optimisations and features to 
 
 What's included?
 ----------------
-(temp text here until I write a proper desc. for this section)
+Important: Please do *not* contact the original optimisation authors for help with this port of their code, they are not involved in any shape or form.
 
 Done:
 - Sodium
@@ -26,6 +26,7 @@ Done:
     - `features.matrix_stack.MixinMatrixStack`
     - `features.matrix_stack.MixinVertexConsumer`
 - Lithium
+    - `alloc.enum_values.LivingEntityMixin`
     - `cached_hashcode.BlockNeighborGroupMixin`
     - `chunk.serialization.MixinBitArray`
     - `fast_loading_screen.MixinLevelLoadingScreen`
@@ -33,9 +34,7 @@ Done:
     - `math.fast_util.AxisCycleDirectionMixin$ForwardMixin`
     - `math.fast_util.BoxMixin`
     - `math.fast_util.DirectionMixin`
-    - `shapes.blockstate_cache.AbstractBlockStateMixin`
     - `shapes.blockstate_cache.BlockMixin`
-    - `shapes.blockstate_cache.BlockShapeCacheMixin`
     - `shapes.precompute_shape_arrays.SimpleVoxelShapeMixin`
     - `shapes.shape_merging.VoxelShapesMixin`
         - Thanks to access transfarmer and others on the Fabric discord for helping me verify that the mixins were actually working by registering breakpoints in the right spots
@@ -43,10 +42,12 @@ Done:
     - `shapes.specialized_shapes.VoxelShapesMixin`
         - Thanks to gigaherz on the MMD discord for helping me get an access transformer for a constructor for this to work
 
-Todo:
-- A complete port other jellysquid3's excellent Lithium and Phosphor 1.16 mods for Fabric to Forge
-    - While jellysquid3 does offer Lithium and Phosphor for 1.15 Forge, they are very stripped down and outdated compared to their Fabric counterparts and there is no sign of them being updated for 1.16 Forge.
-- Portions of jellysquid3's Sodium 1.16 Fabric mod are being ported and then tested in isolation for compatibility and those that play nice with other mods are kept.
+What won't be included?
+-----------------------
+- Fabric-specific optimisations that aren't necessary in Forge
+- Old optimisations that are no longer necessary on modern Minecraft releases
+- Optimisations made by a dev that has reached out to me and politely asked for their optimisations to *not* be ported by me in any form, despite them legally having no grounds to do such a thing. I oblige by these requests out of respect.
+    - My username on CurseForge is Paint_Ninja, similar or identical profile pic to on GitHub, you can message me there if you want to make such a request.
 
 How do you do it?
 -----------------
