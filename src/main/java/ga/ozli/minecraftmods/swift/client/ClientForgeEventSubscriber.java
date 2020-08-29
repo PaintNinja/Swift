@@ -177,8 +177,8 @@ public final class ClientForgeEventSubscriber {
 		checkingCooldown += SwiftConfig.checkInterval;
 	}
 
-	// TODO: Client-side chat commands
-	/*@SubscribeEvent
+	// TODO: More robust system for client-side chat commands
+	@SubscribeEvent
 	public static void ClientChatEvent(final ClientChatEvent event) {
 		final Minecraft mc = Minecraft.getInstance();
 		final ClientPlayerEntity player = mc.player;
@@ -190,20 +190,20 @@ public final class ClientForgeEventSubscriber {
 			if (message.startsWith("/swift")) {
 				if (splitMessage.length == 1) {
 					// todo: proper command help message
-					player.sendMessage(new TranslationTextComponent(Swift.MODID + ".command.swiftBase"));
+					player.sendMessage(new TranslationTextComponent(Swift.MODID + ".command.swiftBase"), player.getGameProfile().getId());
 					event.setCanceled(true); // don't send the message/command to the server as we're dealing with a client-side-only command here
 				} else if (splitMessage.length == 2) {
 					if (splitMessage[1].equals("enable")) {
 						// todo: enable swift using this command
-						mc.player.sendMessage(new TranslationTextComponent(Swift.MODID + ".command.enable"));
+						player.sendMessage(new TranslationTextComponent(Swift.MODID + ".command.enable"), player.getGameProfile().getId());
 						event.setCanceled(true);
 					} else if (splitMessage[1].equals("disable")) {
 						// todo: disable swift using this command
-						mc.player.sendMessage(new TranslationTextComponent(Swift.MODID + ".command.disable"));
+						player.sendMessage(new TranslationTextComponent(Swift.MODID + ".command.disable"), player.getGameProfile().getId());
 						event.setCanceled(true);
 					}
 				}
 			}
 		}
-	}*/
+	}
 }
