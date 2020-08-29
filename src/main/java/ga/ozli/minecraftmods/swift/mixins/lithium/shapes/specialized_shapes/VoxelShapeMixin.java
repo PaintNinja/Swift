@@ -40,82 +40,80 @@ public abstract class VoxelShapeMixin {
     public double getAllowedOffset(AxisRotation cycleDirection, AxisAlignedBB box, double maxDist) {
         if (this.isEmpty()) {
             return maxDist;
-        }
-
-        if (Math.abs(maxDist) < POSITIVE_EPSILON) {
+        } else if (Math.abs(maxDist) < POSITIVE_EPSILON) {
             return 0.0D;
-        }
+        } else {
+            AxisRotation cycle = cycleDirection.reverse();
 
-        AxisRotation cycle = cycleDirection.reverse();
+            Direction.Axis axisX = cycle.rotate(Direction.Axis.X);
+            Direction.Axis axisY = cycle.rotate(Direction.Axis.Y);
+            Direction.Axis axisZ = cycle.rotate(Direction.Axis.Z);
 
-        Direction.Axis axisX = cycle.rotate(Direction.Axis.X);
-        Direction.Axis axisY = cycle.rotate(Direction.Axis.Y);
-        Direction.Axis axisZ = cycle.rotate(Direction.Axis.Z);
+            int minY = Integer.MIN_VALUE;
+            int maxY = Integer.MIN_VALUE;
+            int minZ = Integer.MIN_VALUE;
+            int maxZ = Integer.MIN_VALUE;
 
-        int minY = Integer.MIN_VALUE;
-        int maxY = Integer.MIN_VALUE;
-        int minZ = Integer.MIN_VALUE;
-        int maxZ = Integer.MIN_VALUE;
+            int x, y, z;
 
-        int x, y, z;
+            double dist;
 
-        double dist;
+            if (maxDist > 0.0D) {
+                double max = box.getMax(axisX);
+                int maxIdx = this.getClosestIndex(axisX, max - POSITIVE_EPSILON);
 
-        if (maxDist > 0.0D) {
-            double max = box.getMax(axisX);
-            int maxIdx = this.getClosestIndex(axisX, max - POSITIVE_EPSILON);
+                int maxX = this.part.getSize(axisX);
 
-            int maxX = this.part.getSize(axisX);
+                for (x = maxIdx + 1; x < maxX; ++x) {
+                    minY = minY == Integer.MIN_VALUE ? Math.max(0, this.getClosestIndex(axisY, box.getMin(axisY) + POSITIVE_EPSILON)) : minY;
+                    maxY = maxY == Integer.MIN_VALUE ? Math.min(this.part.getSize(axisY), this.getClosestIndex(axisY, box.getMax(axisY) - POSITIVE_EPSILON) + 1) : maxY;
 
-            for (x = maxIdx + 1; x < maxX; ++x) {
-                minY = minY == Integer.MIN_VALUE ? Math.max(0, this.getClosestIndex(axisY, box.getMin(axisY) + POSITIVE_EPSILON)) : minY;
-                maxY = maxY == Integer.MIN_VALUE ? Math.min(this.part.getSize(axisY), this.getClosestIndex(axisY, box.getMax(axisY) - POSITIVE_EPSILON) + 1) : maxY;
+                    for (y = minY; y < maxY; ++y) {
+                        minZ = minZ == Integer.MIN_VALUE ? Math.max(0, this.getClosestIndex(axisZ, box.getMin(axisZ) + POSITIVE_EPSILON)) : minZ;
+                        maxZ = maxZ == Integer.MIN_VALUE ? Math.min(this.part.getSize(axisZ), this.getClosestIndex(axisZ, box.getMax(axisZ) - POSITIVE_EPSILON) + 1) : maxZ;
 
-                for (y = minY; y < maxY; ++y) {
-                    minZ = minZ == Integer.MIN_VALUE ? Math.max(0, this.getClosestIndex(axisZ, box.getMin(axisZ) + POSITIVE_EPSILON)) : minZ;
-                    maxZ = maxZ == Integer.MIN_VALUE ? Math.min(this.part.getSize(axisZ), this.getClosestIndex(axisZ, box.getMax(axisZ) - POSITIVE_EPSILON) + 1) : maxZ;
+                        for (z = minZ; z < maxZ; ++z) {
+                            if (this.part.containsWithRotation(cycle, x, y, z)) {
+                                dist = this.getValueUnchecked(axisX, x) - max;
 
-                    for (z = minZ; z < maxZ; ++z) {
-                        if (this.part.containsWithRotation(cycle, x, y, z)) {
-                            dist = this.getValueUnchecked(axisX, x) - max;
+                                if (dist >= NEGATIVE_EPSILON) {
+                                    maxDist = Math.min(maxDist, dist);
+                                }
 
-                            if (dist >= NEGATIVE_EPSILON) {
-                                maxDist = Math.min(maxDist, dist);
+                                return maxDist;
                             }
+                        }
+                    }
+                }
+            } else if (maxDist < 0.0D) {
+                double min = box.getMin(axisX);
+                int minIdx = this.getClosestIndex(axisX, min + POSITIVE_EPSILON);
 
-                            return maxDist;
+                for (x = minIdx - 1; x >= 0; --x) {
+                    minY = minY == Integer.MIN_VALUE ? Math.max(0, this.getClosestIndex(axisY, box.getMin(axisY) + POSITIVE_EPSILON)) : minY;
+                    maxY = maxY == Integer.MIN_VALUE ? Math.min(this.part.getSize(axisY), this.getClosestIndex(axisY, box.getMax(axisY) - POSITIVE_EPSILON) + 1) : maxY;
+
+                    for (y = minY; y < maxY; ++y) {
+                        minZ = minZ == Integer.MIN_VALUE ? Math.max(0, this.getClosestIndex(axisZ, box.getMin(axisZ) + POSITIVE_EPSILON)) : minZ;
+                        maxZ = maxZ == Integer.MIN_VALUE ? Math.min(this.part.getSize(axisZ), this.getClosestIndex(axisZ, box.getMax(axisZ) - POSITIVE_EPSILON) + 1) : maxZ;
+
+                        for (z = minZ; z < maxZ; ++z) {
+                            if (this.part.containsWithRotation(cycle, x, y, z)) {
+                                dist = this.getValueUnchecked(axisX, x + 1) - min;
+
+                                if (dist <= POSITIVE_EPSILON) {
+                                    maxDist = Math.max(maxDist, dist);
+                                }
+
+                                return maxDist;
+                            }
                         }
                     }
                 }
             }
-        } else if (maxDist < 0.0D) {
-            double min = box.getMin(axisX);
-            int minIdx = this.getClosestIndex(axisX, min + POSITIVE_EPSILON);
 
-            for (x = minIdx - 1; x >= 0; --x) {
-                minY = minY == Integer.MIN_VALUE ? Math.max(0, this.getClosestIndex(axisY, box.getMin(axisY) + POSITIVE_EPSILON)) : minY;
-                maxY = maxY == Integer.MIN_VALUE ? Math.min(this.part.getSize(axisY), this.getClosestIndex(axisY, box.getMax(axisY) - POSITIVE_EPSILON) + 1) : maxY;
-
-                for (y = minY; y < maxY; ++y) {
-                    minZ = minZ == Integer.MIN_VALUE ? Math.max(0, this.getClosestIndex(axisZ, box.getMin(axisZ) + POSITIVE_EPSILON)) : minZ;
-                    maxZ = maxZ == Integer.MIN_VALUE ? Math.min(this.part.getSize(axisZ), this.getClosestIndex(axisZ, box.getMax(axisZ) - POSITIVE_EPSILON) + 1) : maxZ;
-
-                    for (z = minZ; z < maxZ; ++z) {
-                        if (this.part.containsWithRotation(cycle, x, y, z)) {
-                            dist = this.getValueUnchecked(axisX, x + 1) - min;
-
-                            if (dist <= POSITIVE_EPSILON) {
-                                maxDist = Math.max(maxDist, dist);
-                            }
-
-                            return maxDist;
-                        }
-                    }
-                }
-            }
+            return maxDist;
         }
-
-        return maxDist;
     }
 
     /**
