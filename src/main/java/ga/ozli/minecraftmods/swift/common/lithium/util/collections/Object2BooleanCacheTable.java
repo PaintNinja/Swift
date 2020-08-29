@@ -4,7 +4,6 @@ import it.unimi.dsi.fastutil.HashCommon;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.function.Predicate;
-import ga.ozli.minecraftmods.swift.common.lithium.util.collections.Object2BooleanCacheTable.Node;
 
 /**
  * A lossy hashtable implementation that stores a mapping between an object and a boolean.
